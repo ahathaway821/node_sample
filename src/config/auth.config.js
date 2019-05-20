@@ -1,5 +1,5 @@
 var expressJwt = require("express-jwt");
-var { ErrorType, HandleError } = require("../errors/error.model");
+var { ErrorType, HandledError } = require("../errors/error.model");
 
 const ERROR_MESSAGE = "You do not have permission ot access this resources.";
 
@@ -12,15 +12,16 @@ module.exports = app =>
                         "/swagger.json",
                         "/exampleerror",
                         "/health",
-                        "/auth/authenticate"
+                        "/auth/authenticate",
+                        "/sample"
                     ]
                 })
             );
 
             app.use((err, req, res, next) => {
-                if (err.name == "UnathorizedError") {
+                if (err.name === "UnauthorizedError") {
                     next(
-                        new HandleError(ErrorType.SECURITY, ERROR_MESSAGE, err)
+                        new HandledError(ErrorType.SECURITY, ERROR_MESSAGE, err)
                     );
                 }
             })

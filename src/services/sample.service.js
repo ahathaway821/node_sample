@@ -1,10 +1,16 @@
 var SampleModel = require("../models/sample.model");
+var dbModels = require("../models/db/database.connection");
 
 const service = {};
 
 // ==================================================
 
-service.list = () => Promise.resolve([]);
+service.list = () => dbModels.Country.findAll({
+    include: [{// Notice `include` takes an ARRAY
+    model: dbModels.City,
+    as: 'Cities'
+  }]
+});
 
 service.read = recordId => Promise.resolve({});
 

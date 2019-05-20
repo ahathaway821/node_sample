@@ -13,7 +13,7 @@ const router = require("express").Router();
  *          - application/json
  *      responses:
  *          200:
- *              description: An array of sample modelssa
+ *              description: An array of sample models
  *              schema:
  *                $ref: '#/definitions/SampleResponse'
  */

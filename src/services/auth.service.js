@@ -9,6 +9,7 @@ const { JWT_SECRET, JWT_ISSUER } = process.env;
 service.generate = data =>
     new Promise((resolve, reject) => {
         try {
+            console.log('auth');
             const current = Math.floor(Date.now() / 1000);
 
             // TODO: Validate against the request body using a client id
