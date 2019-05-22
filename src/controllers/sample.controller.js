@@ -1,5 +1,7 @@
 var _service = require("../services/sample.service");
+var Post = require("../models/post.model");
 const router = require("express").Router();
+
 
 /**
  * @swagger
@@ -7,21 +9,20 @@ const router = require("express").Router();
  *    get:
  *      tags:
  *        - Sample
- *      summary: Gets a list of sample models
- *      description: Returns a list of sample models
+ *      summary: Gets a list of post models
+ *      description: Returns a list of post models
  *      produces:
  *          - application/json
  *      responses:
  *          200:
- *              description: An array of sample models
+ *              description: An array of Post models
  *              schema:
- *                $ref: '#/definitions/SampleResponse'
+ *                $ref: '#/definitions/PostResponse'
  */
-router.get("/sample/", (req, res, next) =>
-    _service
-        .list()
-        .then(data => res.send(data))
-        .catch(next)
+router.get("/sample/", (req, res, next) => 
+    _service.list()      
+            .then(data => res.send(data))
+            .catch(next)
 );
 
 /**

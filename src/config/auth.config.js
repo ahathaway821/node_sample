@@ -13,7 +13,7 @@ module.exports = app =>
                         "/exampleerror",
                         "/health",
                         "/auth/authenticate",
-                        "/sample"
+                        "/world"
                     ]
                 })
             );

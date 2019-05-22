@@ -1,12 +1,42 @@
+/**
+ * @swagger
+ * definitions:
+ *   CityResponse:
+ *     type: object
+ *     properties:
+ *       id:
+ *         type: integer
+ *       countrycode:
+ *         type: string
+ *       name:
+ *         type: string
+ *       district:
+ *         type: string
+ *       population:
+ *         type: integer
+ *   CityRequest:
+ *     type: object
+ *     properties:
+ *       id:
+ *         type: integer
+ *       countrycode:
+ *         type: string
+ *       name:
+ *         type: string
+ *       district:
+ *         type: string
+ *       population:
+ *         type: integer
+ */
 module.exports = (sequelize, DataTypes) => {
     var City = sequelize.define('City', {
-        countrycode: { type: DataTypes.STRING, foreignKey: true },
+        id: { type: DataTypes.INTEGER, primaryKey: true},
+        countrycode: DataTypes.STRING,
         name: DataTypes.STRING,
         district: DataTypes.STRING,
-        id: { type: DataTypes.INTEGER, primaryKey: true},
         population: DataTypes.INTEGER
     }, {
-       tableName: 'city' 
+       tableName: 'city'
     });
 
     return City;

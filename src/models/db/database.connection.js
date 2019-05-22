@@ -40,8 +40,8 @@ if (config.use_env_variable) {
     var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+// Load in models and their associations to be registered in sequelize
 const dir = `${__dirname}`;
-
 fs
     .readdirSync(dir)
     .filter(file => {

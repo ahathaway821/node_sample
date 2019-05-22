@@ -18,6 +18,7 @@ module.exports = app =>
         apis: [
           path.resolve(__dirname, "../controllers/*.controller.js"),
           path.resolve(__dirname, "../models/*.model.js"),
+          path.resolve(__dirname, "../models/db/*.model.js"),
           path.resolve(__dirname, "../errors/*.model.js")
         ]
       };

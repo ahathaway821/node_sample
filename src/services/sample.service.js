@@ -1,18 +1,16 @@
-var SampleModel = require("../models/sample.model");
-var dbModels = require("../models/db/database.connection");
-
 const service = {};
+const axios = require('axios');
+
+const client = axios.create({
+    baseURL: "https://jsonplaceholder.typicode.com/",
+    timeout:1000
+});
 
 // ==================================================
 
-service.list = () => dbModels.Country.findAll({
-    include: [{// Notice `include` takes an ARRAY
-    model: dbModels.City,
-    as: 'Cities'
-  }]
-});
+service.list = () => client.get('/posts').then(response => response.data);
 
-service.read = recordId => Promise.resolve({});
+service.read = recordId => client.get(`/posts/${recordId}`).then(response => response.data);
 
 service.create = model => Promise.resolve({});
 
